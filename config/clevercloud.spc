@@ -8,7 +8,5 @@ connection "clevercloud" {
   organization_id = "YOUR_ORG_ID"
 
   # API endpoint URL for Clever Cloud.
-  api_endpoint = "https://api.clever-cloud.com"
-
-"
+  api_endpoint = "https://api-bridge.clever-cloud.com"
 }
