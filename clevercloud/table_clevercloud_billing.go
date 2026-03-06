@@ -40,7 +40,6 @@ func tableCleverCloudBilling(ctx context.Context) *plugin.Table {
 			{Name: "vat_percent", Type: proto.ColumnType_DOUBLE, Description: "VAT percentage applied.", Transform: transform.FromField("VatPercent")},
 			{Name: "discount", Type: proto.ColumnType_DOUBLE, Description: "Discount applied to the invoice.", Transform: transform.FromField("Discount")},
 			{Name: "price_factor", Type: proto.ColumnType_DOUBLE, Description: "Price factor applied.", Transform: transform.FromField("PriceFactor")},
-			{Name: "kpi_compute_months", Type: proto.ColumnType_DOUBLE, Description: "Number of months for KPI computation.", Transform: transform.FromField("KpiComputeMonths")},
 
 			// Payment info
 			{Name: "payment_provider", Type: proto.ColumnType_STRING, Description: "Payment provider used (e.g., stripe).", Transform: transform.FromField("PaymentProvider")},
@@ -129,7 +128,6 @@ type Invoice struct {
 	PayDate          *string        `json:"pay_date"`
 	Status           string         `json:"status"`
 	Currency         string         `json:"currency"`
-	KpiComputeMonths float64        `json:"kpi_compute_months"`
 	PriceFactor      float64        `json:"price_factor"`
 	Discount         float64        `json:"discount"`
 	VatPercent       float64        `json:"vat_percent"`
@@ -139,7 +137,6 @@ type Invoice struct {
 	PaymentProvider  *string        `json:"payment_provider"`
 	TransactionID    *string        `json:"transaction_id"`
 	CustomerOrderID  *string        `json:"customer_order_id"`
-	InvoiceDayPlan   *string        `json:"invoice_day_plan"`
 }
 
 func fetchInvoiceData(ctx context.Context, token string, organizationID string, apiEndpoint string) ([]Invoice, error) {
